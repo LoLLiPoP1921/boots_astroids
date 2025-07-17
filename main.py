@@ -3,6 +3,8 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from circleshape import CircleShape
+import sys
 
 def main():
     
@@ -35,7 +37,13 @@ def main():
         
         for sprite in drawable:
             sprite.draw(screen)
+
+        for sprite in asteroids:
+            if sprite.collision(player):
+                print("Game Over!")
+                sys.exit()
         
+
         updatable.update(dt)
         
         
